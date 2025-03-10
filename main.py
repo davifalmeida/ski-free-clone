@@ -4,18 +4,15 @@ from skier import Skier
 from obstacle import Obstacle
 from yeti import Yeti
 
-
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("SkiFree Clone")
 
-
 font = pygame.font.SysFont(None, 36)
 
 skier = Skier()
-obstacles = [Obstacle() for _ in range(10)]
+obstacles = Obstacle()  # Criar um único objeto de Obstacles que gerencia todos os obstáculos
 yeti = Yeti()
-
 
 running = True
 clock = pygame.time.Clock()
@@ -32,9 +29,8 @@ while running:
     skier.move(keys)
 
     # Atualizar obstáculos
-    for obstacle in obstacles:
-        obstacle.update()
-        obstacle.draw(screen)
+    obstacles.update()
+    obstacles.draw(screen)
 
     # Atualizar monstro
     if distance > 500:
@@ -52,8 +48,8 @@ while running:
     screen.blit(score_text, (10, 10))
 
     # Verificar colisões
-    for obstacle in obstacles:
-        if skier.rect.colliderect(obstacle.rect):
+    for obj in obstacles.obstacles:  # Corrigindo a iteração sobre os obstáculos
+        if skier.rect.colliderect(obj["rect"]):
             print("Você bateu em um obstáculo!")
             running = False
 
