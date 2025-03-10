@@ -1,9 +1,11 @@
 import pygame
-from settings import WIDTH, HEIGHT, BLUE
+from settings import WIDTH, HEIGHT, ASSETS_PATH
 
 class Skier:
     def __init__(self):
-        self.rect = pygame.Rect(WIDTH // 2, HEIGHT - 100, 40, 40)
+        self.image = pygame.image.load(ASSETS_PATH + "skiador_reto.png")
+        self.image = pygame.transform.scale(self.image, (40, 40))
+        self.rect = self.image.get_rect(midbottom=(WIDTH // 2, HEIGHT - 100))
         self.speed = 5
 
     def move(self, keys):
@@ -13,4 +15,4 @@ class Skier:
             self.rect.x += self.speed
 
     def draw(self, screen):
-        pygame.draw.rect(screen, BLUE, self.rect)
+        screen.blit(self.image, self.rect.topleft)
