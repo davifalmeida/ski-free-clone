@@ -1,18 +1,23 @@
 import pygame
 import random
 
-
+# Inicializar o pygame
 pygame.init()
 
-
+# Configurações da tela
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("SkiFree Clone")
 
-
+# Cores
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+BLACK = (0, 0, 0)
+
+# Fonte para o placar
+font = pygame.font.SysFont(None, 36)
 
 # Configuração do esquiador
 skier = pygame.Rect(WIDTH // 2, HEIGHT - 100, 40, 40)
@@ -63,11 +68,15 @@ while running:
             yeti.x = random.randint(0, WIDTH - 50)
         pygame.draw.rect(screen, RED, yeti)
     
-
-    pygame.draw.rect(screen, (0, 0, 255), skier)
+    # Desenhando o esquiador
+    pygame.draw.rect(screen, BLUE, skier)
     
-  
+    # Atualizar distância
     distance += 1
+    
+    # Exibir o placar
+    score_text = font.render(f"Distância: {distance}", True, BLACK)
+    screen.blit(score_text, (10, 10))
     
     # Verificando colisões
     for obstacle in obstacles:
