@@ -25,11 +25,17 @@ pip install pygame
 python main.py
 ```
 
+
 ## 🎮 **Controles**
 - **Seta Esquerda (←):** Move o esquiador para a esquerda
 - **Seta Direita (→):** Move o esquiador para a direita
 - **Seta Cima (↑):** Aumenta a velocidade
 - **Seta Baixo (↓):** Diminui a velocidade
+
+## 📸 **Screenshots**
+![image](https://github.com/user-attachments/assets/bcef0de6-85ed-4e24-8376-b1fb40a20106)
+![image](https://github.com/user-attachments/assets/368d5a24-36a1-4629-8266-7cfd5fbe3f80)
+
 
 ## 📁 **Estrutura do Projeto**
 ```
